@@ -1,0 +1,21 @@
+name: ci-wf
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+jobs:
+  liniting-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Welcome message
+        run: echo "Welcome to CI pipeline"
+      - name: clone the repository
+        uses: actions/checkout@v4
+      - name: installing HTMLHINT
+        run: npm install --save-dev htmlhint
+      - name: run html hint
+        run: npx htmlhint "**/*.html"
+        
